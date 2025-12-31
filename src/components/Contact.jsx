@@ -25,7 +25,7 @@ export default function Contact() {
                       <span className="contact-icon" aria-hidden="true">
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <rect width="24" height="24" rx="4" fill="#0077b5"/>
-                      <path d="M6 8l6 5 6-5" stroke="#fff" strokeWidth="2" strokeLinecap="round" stroke-linejoin="round"/>
+                      <path d="M6 8l6 5 6-5" stroke="#fff" strokeWidth="2" strokeLineCap="round" strokeLineJoin="round"/>
                       <rect x="6" y="8" width="12" height="8" rx="2" stroke="#fff" strokeWidth="2"/>
                      </svg>
                     </span>
