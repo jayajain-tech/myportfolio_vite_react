@@ -1,5 +1,6 @@
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import { useRef } from 'react';
-import NavBar from './components/NavBar';
+import Header from './components/Header';
 import Home from './components/Home';
 import Skills from './components/Skills';
 import Qualifications from './components/Qualifications';
@@ -8,7 +9,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import './App.css';
 function App() {
-  // Create refs for each section
+  // Create refs for each Route
   const homeRef = useRef(null);
   const skillsRef = useRef(null);
   const qualRef = useRef(null);
@@ -16,23 +17,19 @@ function App() {
   const contactsRef = useRef(null);
 
   return (
-    <>
-      <NavBar
-        homeRef={homeRef}
-        skillsRef={skillsRef}
-        qualRef={qualRef}
-        projectsRef={projectsRef}
-        contactsRef={contactsRef}
-      />
+    <BrowserRouter>
+        <Header />
       <main>
-        <section ref={homeRef}><Home /></section>
-        <section ref={skillsRef}><Skills /></section>
-        <section ref={qualRef}><Qualifications /></section>
-        <section ref={projectsRef}><Projects /></section>
-        <section ref={contactsRef}><Contact /></section>
+        <Routes>
+        <Route path="/" element = {<Home />} />
+        <Route path="/skills" element = {<Skills />} />
+        <Route path="/qualifications" element = {<Qualifications />} />
+        <Route path="/projects" element = {<Projects />} />
+        <Route path="/contacts" element = {<Contact />} />
+        </Routes>
         <Footer />
       </main>
-    </>
+    </BrowserRouter>
   );
 }
 

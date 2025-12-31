@@ -4,8 +4,9 @@
 */
 import React from 'react';
 import profilePic from '../assets/profile-pic.jpg';
+import {useNavigate} from 'react-router-dom';
 export default function Home() {
-
+    const navigate = useNavigate();
     return (
             <>
             <section className="container home">
@@ -44,15 +45,12 @@ export default function Home() {
                    { /*   <!-- Contact Me button --> */ }
                     <button className="home_contactme_button"
                      onClick={() => {
-                       const contactSection = document.getElementById('contact');
-                       if (contactSection) {
-                         contactSection.scrollIntoView({ behavior: 'smooth' });
-                       }
+                        navigate('/contacts');
                      }}
                     >Contact Me</button>
                 </div>
             </section>
-            <hr />
+
                 </>
     );
 }

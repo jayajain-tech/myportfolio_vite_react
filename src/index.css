@@ -54,6 +54,16 @@ body {
   background: var(--bg);
   color: var(--text);
 }
+/*
+  Header Section:
+  Centered
+*/
+.header {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+
 
 /*
   Navigation Bar Layout:
@@ -140,6 +150,18 @@ main {
   Responsive Navigation:
   Compact spacing and font size on small screens.
 */
+
+/*
+  Responsive Footer:
+  Smaller font and padding on small screens.
+*/
+@media (max-width: 480px) {
+  .header {
+    font-size: 0.8rem;
+    padding: 0.7rem 0;
+  }
+}
+
 @media (max-width: 480px) {
     .container.nav_container {
         gap: 0.25rem;

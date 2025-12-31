@@ -35,7 +35,6 @@ export default function Skills() {
                 <li>Basic Kafka</li>
             </ul>
         </section>
-        <hr />
             </>
     );
 }

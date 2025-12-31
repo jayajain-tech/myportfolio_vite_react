@@ -1,30 +1,28 @@
 import React from 'react';
 import ThemeToggle from './ThemeToggle.jsx';
-
-export default function NavBar({ homeRef, skillsRef, qualRef, projectsRef, contactsRef }) {
-    const handleNav = (ref) => {
-        ref?.current?.scrollIntoView({ behavior: 'smooth' });
-    };
+import {useNavigate} from 'react-router-dom';
+export default function NavBar() {
+    const navigate = useNavigate();
 
     return (
         <nav>
             <div className="container nav_container">
-                <a href="#home" onClick={e => { e.preventDefault(); handleNav(homeRef); }}>
+                <a href="#home" onClick={e => { e.preventDefault(); navigate('/'); }}>
                     Jaya Prabha Bhura
                 </a>
-                <button className="nav_home-btn" onClick={() => handleNav(homeRef)}>
+                <button className="nav_home-btn" onClick={() => navigate('/')}>
                     Home
                 </button>
-                <button className="nav_skills-btn" onClick={() => handleNav(skillsRef)}>
+                <button className="nav_skills-btn" onClick={() => navigate('/skills')}>
                     Skills
                 </button>
-                <button className="nav_qualifications-btn" onClick={() => handleNav(qualRef)}>
+                <button className="nav_qualifications-btn" onClick={() => navigate('/qualifications')}>
                     Qualifications
                 </button>
-                <button className="nav_projects-btn" onClick={() => handleNav(projectsRef)}>
+                <button className="nav_projects-btn" onClick={() => navigate('/projects')}>
                     Projects
                 </button>
-                <button className="nav_contacts-btn" onClick={() => handleNav(contactsRef)}>
+                <button className="nav_contacts-btn" onClick={() => navigate('/contacts')}>
                     Contacts
                 </button>
                 <ThemeToggle />

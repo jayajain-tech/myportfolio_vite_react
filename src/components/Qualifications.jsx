@@ -29,7 +29,6 @@ export default function Qualifications() {
                     </div>
                 </div>
             </section>
-            <hr />
                 </>
     );
 }
