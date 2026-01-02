@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ThemeToggle from './ThemeToggle.jsx';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 export default function NavBar() {
     const navigate = useNavigate();
+    const [isHamBurgerOpen, setIsHamBurgerOpen] = useState(false);
 
     return (
         <nav>
@@ -10,21 +12,32 @@ export default function NavBar() {
                 <a href="#home" onClick={e => { e.preventDefault(); navigate('/'); }}>
                     Jaya Prabha Bhura
                 </a>
-                <button className="nav_home-btn" onClick={() => navigate('/')}>
-                    Home
+                <button
+                    className={`nav_hamburger-toggle ${isHamBurgerOpen ? 'hamBurger-open' : ''}`}
+                    onClick={() => setIsHamBurgerOpen(!isHamBurgerOpen)}
+                >
+                    <span className="nav_hamburger-toggle-bar"></span>
+                    <span className="nav_hamburger-toggle-bar"></span>
+                    <span className="nav_hamburger-toggle-bar"></span>
                 </button>
-                <button className="nav_skills-btn" onClick={() => navigate('/skills')}>
-                    Skills
-                </button>
-                <button className="nav_qualifications-btn" onClick={() => navigate('/qualifications')}>
-                    Qualifications
-                </button>
-                <button className="nav_projects-btn" onClick={() => navigate('/projects')}>
-                    Projects
-                </button>
-                <button className="nav_contacts-btn" onClick={() => navigate('/contacts')}>
-                    Contacts
-                </button>
+                <div className={`nav_overlay ${isHamBurgerOpen ? 'hamBurger-open' : ''}`}>
+
+                    <button onClick={() => { setIsHamBurgerOpen(false); navigate('/'); }}>
+                        Home
+                    </button>
+                    <button onClick={() => { setIsHamBurgerOpen(false); navigate('/skills'); }}>
+                        Skills
+                    </button>
+                    <button onClick={() => { setIsHamBurgerOpen(false); navigate('/qualifications'); }}>
+                        Qualifications
+                    </button>
+                    <button onClick={() => { setIsHamBurgerOpen(false); navigate('/projects'); }}>
+                        Projects
+                    </button>
+                    <button onClick={() => { setIsHamBurgerOpen(false); navigate('/contacts'); }}>
+                        Contacts
+                    </button>
+                </div>
                 <ThemeToggle />
             </div>
         </nav>

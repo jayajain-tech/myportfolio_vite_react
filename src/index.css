@@ -102,7 +102,21 @@ main {
   Navigation Buttons:
   Common button styles for all nav buttons.
 */
-.container.nav_container > button {
+
+/* Default styles for larger screens (laptops and above) */
+.nav_overlay {
+    background: var(--card-bg);
+    display: flex;
+    align-items: center;
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+
+
+.nav_overlay  > button{
     background-color: #0077b5;
     display: inline-flex;
     align-items: center;
@@ -116,20 +130,59 @@ main {
     font-weight: bold;
     font-size: 0.95rem;
     transition: background 0.15s ease;
+    transform: translateY(0);
+}
+
+.nav_hamburger-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: none;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.4rem 0.6rem;
+   align-items: center;
+}
+
+.nav_hamburger-toggle-bar {
+  display: none;
+  width: 20px;
+  height: 2px;
+  background-color: #333;
+  border-radius: 2px;
+  transition: all 0.3s;
 }
 
 /*
   Nav Button Hover/Focus States:
   Visual feedback for interaction.
 */
-.container.nav_container > button:hover {
+.nav_overlay > button:hover {
     background: rgba(0,0,0,0.04);
 }
-.container.nav_container > button:focus {
+.nav_overlay> button:focus {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
 }
+.nav_theme-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease;
+}
 
+.nav_theme-btn:hover {
+    background: rgba(0,0,0,0.04);
+}
+.nav_theme-btn:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
 /*
   Theme Icon Sizing:
   Ensures moon icon is sized and aligned.
@@ -146,13 +199,10 @@ main {
     stroke-width: 2;
 }
 
-/*
-  Responsive Navigation:
-  Compact spacing and font size on small screens.
-*/
+
 
 /*
-  Responsive Footer:
+  Responsive header:
   Smaller font and padding on small screens.
 */
 @media (max-width: 480px) {
@@ -161,16 +211,68 @@ main {
     padding: 0.7rem 0;
   }
 }
+/*
+  Responsive Navigation:
+  Compact spacing and font size on small screens.
 
-@media (max-width: 480px) {
-    .container.nav_container {
-        gap: 0.25rem;
+/*
+  Hamburger Menu Toggle:
+  Shows hamburger button and hides other nav items on small screens.
+*/
+
+@media (max-width: 767px) {
+   .nav_hamburger-toggle {
+
+
+              display: inline-flex;
+
+
     }
-    .container.nav_container > button {
-        padding: 0.3rem 0.45rem;
-        font-size: 0.85rem;
+   .nav_hamburger-toggle-bar{
+         display: block;
     }
+.nav_overlay{
+        visibility: hidden;
+        display: none;
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    .nav_overlay.hamBurger-open {
+        visibility: visible;
+
+        opacity: 1;
+        transform: scale(1);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: var(--card-bg);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+    }
+
+
+/* Adjust close icon styling for better alignment */
+.nav_hamburger-toggle.hamBurger-open .nav_hamburger-toggle-bar {
+    background-color: var(--accent); /* Highlight color for close icon */
 }
+
+
+}
+/* Transform bars into "X" when open */
+.nav_hamburger-toggle.hamBurger-open .nav_hamburger-toggle-bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+.nav_hamburger-toggle.hamBurger-open .nav_hamburger-toggle-bar:nth-child(2) {
+    opacity: 0;
+}
+.nav_hamburger-toggle.hamBurger-open .nav_hamburger-toggle-bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Hide nav_overlay when hamBurger-open is not active */
 
 /*
   Main Content Responsive Margin:
